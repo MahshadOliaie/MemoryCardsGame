@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(./images/uuunion-2.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: repeat(4, 150px);
+    gap: 8px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    background: linear-gradient(hsl(195.56deg 82.53% 44.9%),hsl(196, 100%, 36%));
+    border-radius: 40px;
+    border: 3px solid black;
+    box-shadow: 1px 1px .5rem rgba(0, 0, 0, 0.379);
+    transform: scaleX(1);
+    transition: 400ms;
+} 
+
+i {
+    display: none !important;
+}
+
+
+.show{
+    pointer-events: none;
+    background: hsl(196, 74%, 56%);
+    transform: scaleX(-1);
+    transition: 400ms;
+}
+
+.show i{
+    display: block !important;
+    transform: scaleX(-1);
+}
+
+
+.matched{
+    background-color: green;
+    pointer-events: none;
+}
+
+.unmatched{
+    background-color: red;
+    animation: shake 200ms;
+}
+.unmatched i{
+    animation: shake 200ms;
+}
+
+
+.freeze{
+    pointer-events: none;
+}
+
+
+
+
+.counter{
+    position: absolute;
+    z-index: 1;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(30px);
+}
+
+.oneimg{
+    width: 0;
+}
+
+.twoimg{
+    width: 0;
+}
+.threeimg{
+    width: 0;
+}
+
+@keyframes count {
+    from{
+       width: 0;
+    }
+    to{
+        width: 60%;
+    }
+}
+
+@keyframes shake {
+   0%{
+    transform: translateX(2px);
+   }
+   20%{
+    transform: translateX(-4px);
+   }
+   40%{
+    transform: translateX(2px);
+   }
+   80%{
+    transform: translateX(-4px);
+   }
+   100%{
+    transform: none;
+   }
+}
+
+
+
+.tools{
+    width: 50px;
+    font-size: 40px;
+    color: hsl(196, 100%, 36%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    position: absolute;
+    right: 50px;
+}
+.tools i{
+    display: block !important;
+    text-shadow: 1px 1px .5rem rgba(0, 0, 0, 0.499);
+    cursor: pointer;
+
+}
+#hint span{
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    font-family: fantasy;
+}
+
