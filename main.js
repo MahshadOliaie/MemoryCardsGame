@@ -6,7 +6,8 @@ let numbers = [...document.querySelectorAll(".number img")];
 let count = [];
 let hint = document.querySelector("#hint");
 let restart = document.getElementById("restart");
-let hintCounter = 2; 
+let hintCounter = 2;
+
 
 function showCard() {
     this.classList.add("show");
@@ -21,16 +22,16 @@ function showCard() {
 
 
 function start() {
-   
+
     counter();
 
     let shuffleCards = shuffle(cards);
     container.innerHTML = "";
     for (const card of shuffleCards) {
         container.innerHTML += card.outerHTML;
-    } 
+    }
 
-    cards=document.querySelectorAll(".card");
+    cards = document.querySelectorAll(".card");
     for (const card of cards) {
         card.addEventListener("click", showCard);
     }
@@ -39,8 +40,8 @@ function start() {
         card.classList.add("show");
     }
 
-    setTimeout(hide, 4000); 
-   
+    setTimeout(hide, 4000);
+
 }
 
 
@@ -102,28 +103,41 @@ function unmatchedCard() {
     count = [];
 }
 
-function counter(){
+function counter() {
     freezeAll();
-    numbers[0].style.animation= "count 1s";
-    numbers[1].style.animation= "count 1s 1s";
-    numbers[2].style.animation= "count 1s 2s";
+    numbers[0].style.animation = "count 1s";
+    numbers[1].style.animation = "count 1s 1s";
+    numbers[2].style.animation = "count 1s 2s";
     unfreezeAll();
 }
 
 
-function help(){
-    if(hintCounter==0){
-        document.querySelector("#hint span").textContent = none;
-    }
 
-    hintCounter--;
-    document.querySelector("#hint span").textContent = hintCounter;
+function help() {
+
+        if(hintCounter!==0){
+            let tohide = [...document.querySelectorAll("section div:not(.matched)")];
+        console.log(tohide);
+
+        hintCounter--;
+        document.querySelector("#hint span").textContent = hintCounter;
+
+        for (const card of cards) {
+            card.classList.add("show");
+        }
+
+
+        setTimeout(function () {
+            for (const item of tohide) {
+                item.classList.remove("show");
+            }
+        }, 1500);
+        }
+
+        if(hintCounter==0) {
+            document.getElementById("hint").style.color="gray";
+        }
     
-    for (const card of cards) {
-        card.classList.add("show");
-    }
-
-    setTimeout(hide, 1500); 
 }
 
 
@@ -133,11 +147,8 @@ window.addEventListener("load", start);
 
 hint.addEventListener("click", help);
 
-restart.addEventListener("click" , function(){
+restart.addEventListener("click", function () {
     window.location.reload(true);
 })
-
-
-
 
 
