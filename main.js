@@ -74,7 +74,8 @@ function matched() {
 
 
     if (mathcedCount === 8) {
-        document.querySelector(".win").style.display="flex";
+        setTimeout(function(){document.querySelector(".win").style.display="flex";} , 500);
+        
     }
 
 }
