@@ -6,7 +6,9 @@ let numbers = [...document.querySelectorAll(".number img")];
 let count = [];
 let hint = document.querySelector("#hint");
 let restart = document.getElementById("restart");
+let restart2 = document.getElementById("restart2");
 let hintCounter = 2;
+let mathcedCount = 0;
 
 
 function showCard() {
@@ -66,8 +68,14 @@ function compare() {
 
 
 function matched() {
+    mathcedCount++;
     count[0].classList.add("matched");
     count[1].classList.add("matched");
+
+
+    if (mathcedCount === 8) {
+        document.querySelector(".win").style.display="flex";
+    }
 
 }
 
@@ -148,6 +156,10 @@ window.addEventListener("load", start);
 hint.addEventListener("click", help);
 
 restart.addEventListener("click", function () {
+    window.location.reload(true);
+})
+
+restart2.addEventListener("click", function () {
     window.location.reload(true);
 })
 

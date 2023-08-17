@@ -22,106 +22,113 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2.5rem;
-    background: linear-gradient(hsl(195.56deg 82.53% 44.9%),hsl(196, 100%, 36%));
+    background: linear-gradient(hsl(195.56deg 82.53% 44.9%), hsl(196, 100%, 36%));
     border-radius: 40px;
     border: 3px solid black;
     box-shadow: 1px 1px .5rem rgba(0, 0, 0, 0.379);
     transform: scaleX(1);
     transition: 400ms;
-} 
+}
 
 i {
     display: none !important;
 }
 
 
-.show{
+.show {
     pointer-events: none;
     background: hsl(196, 74%, 56%);
     transform: scaleX(-1);
     transition: 400ms;
 }
 
-.show i{
+.show i {
     display: block !important;
     transform: scaleX(-1);
 }
 
 
-.matched{
+.matched {
     background-color: green;
     pointer-events: none;
 }
 
-.unmatched{
+.unmatched {
     background-color: red;
     animation: shake 200ms;
 }
-.unmatched i{
+
+.unmatched i {
     animation: shake 200ms;
 }
 
 
-.freeze{
+.freeze {
     pointer-events: none;
 }
 
 
 
 
-.counter{
+.counter {
     position: absolute;
     z-index: 1;
 }
 
-.number{
+.number {
     display: flex;
     justify-content: center;
     align-items: center;
     transform: translateX(30px);
 }
 
-.oneimg{
+.oneimg {
     width: 0;
 }
 
-.twoimg{
+.twoimg {
     width: 0;
 }
-.threeimg{
+
+.threeimg {
     width: 0;
 }
 
 @keyframes count {
-    from{
-       width: 0;
+    from {
+        width: 0;
     }
-    to{
+
+    to {
         width: 60%;
     }
 }
 
 @keyframes shake {
-   0%{
-    transform: translateX(2px);
-   }
-   20%{
-    transform: translateX(-4px);
-   }
-   40%{
-    transform: translateX(2px);
-   }
-   80%{
-    transform: translateX(-4px);
-   }
-   100%{
-    transform: none;
-   }
+    0% {
+        transform: translateX(2px);
+    }
+
+    20% {
+        transform: translateX(-4px);
+    }
+
+    40% {
+        transform: translateX(2px);
+    }
+
+    80% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: none;
+    }
 }
 
 
 
-.tools{
+.tools {
     width: 50px;
     font-size: 40px;
     color: hsl(196, 100%, 36%);
@@ -133,13 +140,15 @@ i {
     position: absolute;
     right: 50px;
 }
-.tools i{
+
+.tools i {
     display: block !important;
     text-shadow: 1px 1px .5rem rgba(0, 0, 0, 0.499);
     cursor: pointer;
 
 }
-#hint span{
+
+#hint span {
     font-size: 16px;
     display: block;
     text-align: center;
@@ -147,3 +156,48 @@ i {
     font-family: fantasy;
 }
 
+
+
+
+.win {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+.winimg {
+    transform: scale(10);
+    animation: win 400ms forwards;
+}
+
+@keyframes win {
+    from {
+        transform: scale(5);
+    }
+
+    to {
+        transform: scale(.3);
+    }
+}
+
+.win i{
+    display: block !important;
+    color: black;
+    font-size: 50px;
+    position: absolute;
+    bottom: 30%;
+}
+
+#restart2 span{
+    font-size: 25px;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-family: fantasy;
+}
