@@ -201,3 +201,16 @@ i {
     margin-left: 10px;
     font-family: fantasy;
 }
+
+
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    position: absolute;
+    top: 0;
+
+}

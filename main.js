@@ -9,7 +9,20 @@ let restart = document.getElementById("restart");
 let restart2 = document.getElementById("restart2");
 let hintCounter = 2;
 let mathcedCount = 0;
+let second = document.querySelector(".second")
+let minute = document.querySelector(".minute")
+let interval;
 
+setTimeout(function () {interval = setInterval(timer, 1000) }, 3000);
+
+function timer() {
+    if (+second.textContent !== 59) {
+        second.textContent = +(second.textContent) + 1;
+    } else {
+        second.textContent = "0";
+        minute.textContent = +(minute.textContent) + 1;
+    }
+}
 
 function showCard() {
     this.classList.add("show");
@@ -74,8 +87,9 @@ function matched() {
 
 
     if (mathcedCount === 8) {
-        setTimeout(function(){document.querySelector(".win").style.display="flex";} , 500);
-        
+        setTimeout(function () { document.querySelector(".win").style.display = "flex"; }, 500);
+        clearInterval(interval);
+
     }
 
 }
@@ -124,8 +138,8 @@ function counter() {
 
 function help() {
 
-        if(hintCounter!==0){
-            let tohide = [...document.querySelectorAll("section div:not(.matched)")];
+    if (hintCounter !== 0) {
+        let tohide = [...document.querySelectorAll("section div:not(.matched)")];
         console.log(tohide);
 
         hintCounter--;
@@ -141,12 +155,12 @@ function help() {
                 item.classList.remove("show");
             }
         }, 1500);
-        }
+    }
 
-        if(hintCounter==0) {
-            document.getElementById("hint").style.color="gray";
-        }
-    
+    if (hintCounter == 0) {
+        document.getElementById("hint").style.color = "gray";
+    }
+
 }
 
 
