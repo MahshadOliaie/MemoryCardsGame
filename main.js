@@ -12,15 +12,18 @@ let mathcedCount = 0;
 let second = document.querySelector(".second")
 let minute = document.querySelector(".minute")
 let interval;
+let time = document.querySelector(".time");
 
 setTimeout(function () {interval = setInterval(timer, 1000) }, 3000);
 
 function timer() {
     if (+second.textContent !== 59) {
         second.textContent = +(second.textContent) + 1;
+        second.textContent = second.textContent.padStart(2,"0");
     } else {
-        second.textContent = "0";
+        second.textContent = "00";
         minute.textContent = +(minute.textContent) + 1;
+        minute.textContent= minute.textContent.padStart(2,"0");
     }
 }
 
@@ -88,6 +91,7 @@ function matched() {
 
     if (mathcedCount === 8) {
         setTimeout(function () { document.querySelector(".win").style.display = "flex"; }, 500);
+        time.textContent=  minute.textContent+":"+second.textContent;
         clearInterval(interval);
 
     }
